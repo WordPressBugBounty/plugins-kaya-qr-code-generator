@@ -8,7 +8,7 @@
  * Donate link: http://dotkaya.org/a-propos/
  * Contributors: kayastudio
  * Requires at least: 4.6.0
- * Tested up to: 6.6
+ * Tested up to: 6.9
  * Stable tag: 1.6.0
  * Version: 1.6.0
  * Requires PHP: 5.2
