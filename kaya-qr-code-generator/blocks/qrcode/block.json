@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "kaya-qrcode-generator/qrcode",
+  "version": "1.0.0",
+  "title": "Kaya QR Code",
+  "category": "widgets",
+  "description": "Add a QR Code to your content.",
+  "keywords": [
+    "kaya",
+    "qr",
+    "qrcode",
+    "code"
+  ],
+  "textdomain": "kaya-qr-code-generator",
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
+}

@@ -4,27 +4,25 @@
  * Kaya Studio - Admin Main Page
  * Displays Kaya Studio admin main page.
  *
- * @version 1.0.0
+ * @version 1.1.0
  */
 
+/**
+ * Displays Kaya Studio page.
+ */
 if (!function_exists('kayastudio_plugins_admin_doMainPage'))
 {
-	/**
-	 * Displays Kaya Studio page.
-	 */
 	function kayastudio_plugins_admin_doMainPage()
 	{
-		if (!current_user_can('manage_options'))
+		if (!current_user_can('edit_posts'))
 		{
-			wp_die('<p>' . __('You do not have sufficient permissions.') . '</p>');
+			wp_die('<p>' . esc_html__('You do not have sufficient permissions.') . '</p>');
 		}
 
 		global $wp_kayastudio_dashboard_pluginsList;
-
 		$pluginsList = $wp_kayastudio_dashboard_pluginsList->getPluginList();
 
 ?>
-
 		<div class="ks-wp-dashboard-page-container">
 			<div class="ks-wp-dashboard-page-row">
 
@@ -36,55 +34,84 @@ if (!function_exists('kayastudio_plugins_admin_doMainPage'))
 
 				<div class="ks-wp-dashboard-page-content">
 
-					<?php
+					<div class="ks-wp-dashboard-page-header-intro">
+						<h2><?php esc_html_e('WordPress plugins', 'kaya-qr-code-generator'); ?></h2>
+						<p>
+							<?php esc_html_e(
+								'Free plugins developed by Kaya Studio to add useful features to WordPress.',
+								'kaya-qr-code-generator'
+							); ?>
+						</p>
+					</div>
 
-					foreach ($pluginsList as $i_plugin)
-					{
+					<div class="ks-wp-dashboard-page-content-grid">
 
-					?>
-						<div class="ks-wp-dashboard-page-content-card">
-							<h6 class="ks-wp-dashboard-page-content-card-title"><?php echo esc_html($i_plugin['title']); ?></h6>
+						<?php foreach ($pluginsList as $i_plugin) : ?>
+
+							<div class="ks-wp-dashboard-page-content-card">
+								<h2 class="ks-wp-dashboard-page-content-card-title">
+									<?php echo esc_html($i_plugin['title']); ?>
+								</h2>
+
+								<p>
+									<?php echo esc_html($i_plugin['page_text']); ?>
+								</p>
+
+								<p class="ks-wp-dashboard-page-content-card-action">
+									<a
+										href="<?php echo esc_url(admin_url('admin.php?page=' . $i_plugin['page_slug'])); ?>"
+										class="ks-wp-dashboard-page-btn ks-wp-dashboard-page-btn-primary"
+										title="<?php echo esc_attr($i_plugin['page_name']); ?>">
+										<?php echo esc_html($i_plugin['page_name']); ?>
+									</a>
+								</p>
+							</div>
+
+						<?php endforeach; ?>
+
+						<div class="ks-wp-dashboard-page-content-card ks-wp-dashboard-page-content-card-all-plugins">
+							<h2 class="ks-wp-dashboard-page-content-card-title">
+								<?php esc_html_e('Free WordPress plugins by Kaya Studio', 'kaya-qr-code-generator'); ?>
+							</h2>
+
 							<p>
-								<?php echo esc_html($i_plugin['page_text']); ?>
+								<?php esc_html_e(
+									'These plugins are developed independently and maintained in my spare time to provide simple and useful solutions for WordPress.',
+									'kaya-qr-code-generator'
+								); ?>
 							</p>
-							<p>
-								<a href="<?php echo esc_url(admin_url('admin.php?page=' . $i_plugin['page_slug'])); ?>" class="ks-wp-dashboard-page-btn ks-wp-dashboard-page-btn-primary" title="<?php echo esc_attr($i_plugin['page_name']); ?>"><?php echo esc_html($i_plugin['page_name']); ?></a>
+
+							<p class="ks-wp-dashboard-page-content-card-action">
+								<a
+									href="<?php echo esc_url('https://profiles.wordpress.org/kayastudio#content-plugins'); ?>"
+									class="ks-wp-dashboard-page-btn ks-wp-dashboard-page-btn-secondary"
+									target="_blank"
+									rel="noopener noreferrer"
+									title="<?php esc_attr_e('Discover all plugins by Kaya Studio', 'kaya-qr-code-generator'); ?>">
+									<?php esc_html_e('Discover all plugins', 'kaya-qr-code-generator'); ?>
+								</a>
 							</p>
 						</div>
-					<?php
 
-					}
-
-					?>
-
-					<div class="ks-wp-dashboard-page-content-card">
-						<h6 class="ks-wp-dashboard-page-content-card-title"><?php echo esc_html__('WordPress plugins by Kaya Studio', WPKQCG_TEXT_DOMAIN); ?></h6>
-						<p>
-							<?php echo esc_html__('Kaya Studio is managed by a freelance web developer. These plugins are developed in his free time and for the love of making useful open source softwares.', WPKQCG_TEXT_DOMAIN); ?>
-						</p>
-						<p>
-							<?php echo esc_html__('Discover all the WordPress plugins developed by Kaya Studio.', WPKQCG_TEXT_DOMAIN); ?>
-						</p>
-						<p>
-							<a href="<?php echo esc_url('https://profiles.wordpress.org/kayastudio#content-plugins'); ?>" class="ks-wp-dashboard-page-btn ks-wp-dashboard-page-btn-primary" target="_blank" rel="noopener noreferrer" title="<?php echo esc_attr__('All plugins by Kaya Studio', WPKQCG_TEXT_DOMAIN); ?>"><?php echo esc_html__('All plugins', WPKQCG_TEXT_DOMAIN); ?></a>
-						</p>
 					</div>
 
 				</div>
 
 				<div class="ks-wp-dashboard-page-sidebar">
 					<?php
-					if (is_file(plugin_dir_path(__FILE__) . 'kayastudio-admin-page-sidebar.php'))
+
+					if (is_file(WPKQCG_PLUGIN_PATH . 'includes/kayastudio-admin-page-sidebar.php'))
 					{
-						include_once plugin_dir_path(__FILE__) . 'kayastudio-admin-page-sidebar.php';
+						include_once WPKQCG_PLUGIN_PATH . 'includes/kayastudio-admin-page-sidebar.php';
 						kayastudio_plugins_admin_doMainPageSidebar();
 					}
+
 					?>
 				</div>
 
 			</div>
 		</div>
-
 <?php
+
 	}
 }

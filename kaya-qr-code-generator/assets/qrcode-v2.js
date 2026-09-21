@@ -1,6 +1,6 @@
 /* qrcode-v2.js -- QR code generator in Javascript (revision 2018-09-21)
  * Written by Kang Seonghoon <public+qrjs@mearie.org>.
- * Edited by Kaya Studio http://kayastudio.fr for custom colors support.
+ * Edited by Kaya Studio https://kayastudio.fr for custom colors support.
  *
  * This source code is in the public domain; if your jurisdiction does not
  * recognize the public domain the terms of Creative Commons CC0 license

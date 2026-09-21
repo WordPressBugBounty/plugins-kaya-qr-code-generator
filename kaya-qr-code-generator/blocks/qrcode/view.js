@@ -1,0 +1,1 @@
+(()=>{function t(){const t=document.querySelectorAll(".kaya-qrcode-block");0!==t.length&&"function"==typeof wpkqcg_qrcode_display&&t.forEach(function(t){"true"!==t.getAttribute("data-js-displayed")&&(wpkqcg_qrcode_display(),t.setAttribute("data-js-displayed","true"))})}t(),window.addEventListener("DOMContentLoaded",t)})();

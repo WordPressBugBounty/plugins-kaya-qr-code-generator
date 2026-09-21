@@ -3,8 +3,10 @@
 /**
  * Generate QR Code Image.
  */
-function wpkqcg_qrcode_encode(tab_data)
+function wpkqcg_qrcode_encode(tab_data, contextDoc)
 {
+	var doc = contextDoc || document;
+
 	//	get QR Code content to encrypt
 	var img_id = tab_data[0];
 	var qr_data = tab_data[1];
@@ -68,7 +70,7 @@ function wpkqcg_qrcode_encode(tab_data)
 		qrcode_img = QRCode.generatePNG(qr_data, options);
 	}
 	//	include to img src
-	document.getElementById(img_id).src = qrcode_img;
+	doc.getElementById(img_id).src = qrcode_img;
 
 	return false;
 }
@@ -76,25 +78,49 @@ function wpkqcg_qrcode_encode(tab_data)
 /**
  * Get values to generate QR Code Image.
  */
-function wpkqcg_qrcode_display()
+function wpkqcg_qrcode_display(contextDoc)
 {
-	var qrcode = document.getElementsByClassName('wpkqcg_qrcode');
+	var doc = contextDoc || document;
+
+	var qrcode = doc.getElementsByClassName('wpkqcg_qrcode');
 	if (qrcode.length !== 0)
 	{
 		for (var i = 0; i < qrcode.length; ++i)
 		{
 			var qrcode_img = qrcode[i];
-			var qrcode_ecclevel = document.getElementById(qrcode_img.id + '_ecclevel');
-			var qrcode_size = document.getElementById(qrcode_img.id + '_size');
-			var qrcode_border = document.getElementById(qrcode_img.id + '_border');
-			var qrcode_color = document.getElementById(qrcode_img.id + '_color');
-			var qrcode_bgcolor = document.getElementById(qrcode_img.id + '_bgcolor');
-			var qrcode_content = document.getElementById(qrcode_img.id + '_content');
-			var qrcode_data = [qrcode_img.id, qrcode_content.value, qrcode_ecclevel.value, qrcode_size.value, qrcode_border.value, qrcode_color.value, qrcode_bgcolor.value];
-			wpkqcg_qrcode_encode(qrcode_data);
+
+			// ASTUCE : On cherche le conteneur parent direct du bloc pour ne pas déborder sur les autres blocs
+			var container = qrcode_img.closest('.kaya-qrcode-block') || doc;
+
+			// Remplacement de document.getElementById par une recherche locale sécurisée
+			var qrcode_ecclevel = container.querySelector('#' + qrcode_img.id + '_ecclevel');
+			var qrcode_size = container.querySelector('#' + qrcode_img.id + '_size');
+			var qrcode_border = container.querySelector('#' + qrcode_img.id + '_border');
+			var qrcode_color = container.querySelector('#' + qrcode_img.id + '_color');
+			var qrcode_bgcolor = container.querySelector('#' + qrcode_img.id + '_bgcolor');
+			var qrcode_content = container.querySelector('#' + qrcode_img.id + '_content');
+
+			// Sécurité : On s'assure que tous les champs requis sont bien présents dans ce bloc avant de générer
+			if (qrcode_content && qrcode_ecclevel && qrcode_size && qrcode_border && qrcode_color && qrcode_bgcolor) 
+			{
+				var qrcode_data = [
+					qrcode_img.id,
+					qrcode_content.value,
+					qrcode_ecclevel.value,
+					qrcode_size.value,
+					qrcode_border.value,
+					qrcode_color.value,
+					qrcode_bgcolor.value
+				];
+				wpkqcg_qrcode_encode(qrcode_data, contextDoc);
+			} else
+			{
+				console.warn("Kaya QR Code : Éléments de configuration manquants pour le bloc " + qrcode_img.id);
+			}
 		}
 	}
 }
+
 
 /**
  * Download the QR Code Image.

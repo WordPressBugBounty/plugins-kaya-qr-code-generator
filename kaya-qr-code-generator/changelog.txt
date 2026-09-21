@@ -1,85 +1,113 @@
 == Changelog ==
 
+= 1.7.0 =
+
+* Added: Built-in Gutenberg block for adding and configuring QR codes directly in the block editor.
+* Added: QR code preview in the Gutenberg block.
+* Added: Generated shortcode copy button.
+* Improved: Plugin administration interface and user experience.
+* Improved: Settings and Shortcode generator interface.
+* Improved: Settings and generator descriptions.
+* Improved: Documentation and user interface consistency.
+
 = 1.6.0 =
-* Fix: Proper query string added to the automatic current page url if parameters are already present.
-* Adding: Provides option to remove plugin style on QR Code image.
-* Adding: Provides option to select border level on QR Code image.
-* Adding: Provides option to enabling a button to download QR Code image on frontend, with custom text and alignment.
-* Adding: On QR Code Generator settings page: Settings to select Meta box context and priority in editor.
-* Adding: On QR Code Generator settings page: Settings to select default QR Code image color and background color.
+
+* Fixed: Proper query string added to the automatic current page URL if parameters are already present.
+* Added: Option to remove the default plugin styles from the QR code image.
+* Added: Option to select the QR code border width.
+* Added: Option to display a download button on the frontend with custom text and alignment.
+* Added: Settings to select the meta box context and priority in the editor.
+* Added: Settings to select the default QR code image color and background color.
 
 = 1.5.3 =
-* Fix: Cross Site Scripting (XSS) vulnerability on url attribute.
+
+* Fixed: Cross Site Scripting (XSS) vulnerability on url attribute.
 
 = 1.5.2 =
-* Fix: "PHP Fatal error - Cannot access offset of type string on string" on PHP 8 when using dynamic shortcode without arguments.
+
+* Fixed: "PHP Fatal error - Cannot access offset of type string on string" on PHP 8 when using dynamic shortcode without arguments.
 
 = 1.5.1 =
-* Fix: Undefined function wpkqcg_admin_getUsersRoles() on new multisite site install called outside administration.
+
+* Fixed: Undefined function wpkqcg_admin_getUsersRoles() on new multisite site install called outside administration.
 
 = 1.5.0 =
-* Fix: Dashboard plugin icon break.
-* Adding: Visual segmentation of Shortcode generator assistant options.
-* Adding: Reinforcement function on QR Code display execution.
-* Adding: Provides option to use automatic current page URL or QR Code content URL as clickable link.
-* Adding: Provides option to use query string added to the automatic current page url.
-* Adding: Provides the ability to use non-standard URL schemes as link.
-* Adding: Color picker for colors fields on Shortcode generator assistant.
-* Adding: On QR Code Generator settings page: Setting to enable or disable the reduced shortcode generator assistant in editor.
-* Adding: On QR Code Generator settings page: Setting to display or hide Shortcode generator assistant to selected user role.
-* Adding: On QR Code Generator settings page: Setting to display or hide Shortcode generator assistant to selected post type.
+
+* Fixed: Dashboard plugin icon break.
+* Added: Visual segmentation of Shortcode generator assistant options.
+* Added: Reinforcement function on QR Code display execution.
+* Added: Provides option to use automatic current page URL or QR Code content URL as clickable link.
+* Added: Provides option to use query string added to the automatic current page url.
+* Added: Provides the ability to use non-standard URL schemes as link.
+* Added: Color picker for colors fields on Shortcode generator assistant.
+* Added: On QR Code Generator settings page: Setting to enable or disable the reduced shortcode generator assistant in editor.
+* Added: On QR Code Generator settings page: Setting to display or hide Shortcode generator assistant to selected user role.
+* Added: On QR Code Generator settings page: Setting to display or hide Shortcode generator assistant to selected post type.
 
 = 1.4.2 =
-* Fix: Uncaught error of class not found when executed outside administration like cron daemon.
-* Fix: Alignment problem with the link surrounding the image.
-* Adding: Title alignment feature.
+
+* Fixed: Uncaught error of class not found when executed outside administration like cron daemon.
+* Fixed: Alignment problem with the link surrounding the image.
+* Added: Title alignment feature.
 
 = 1.4.1 =
-* Adding: Plugin options page in dashboard with shortcode generator assistant.
-* Adding: Important notice in the post's shortcode generator assistant.
+
+* Added: Plugin options page in dashboard with shortcode generator assistant.
+* Added: Important notice in the post's shortcode generator assistant.
 
 = 1.4.0 =
-* Fix: Illegal string offset warning when dynamic shortcode content is empty.
-* Fix: Check for illegal characters in size and colors parameters.
-* Fix: Allow Hexadecimal ASCII codes in the content.
-* Adding: Anchor link parameter added to the automatic current page url.
-* Adding: QR Code image clickable link available with the automatic current page url.
+
+* Fixed: Illegal string offset warning when dynamic shortcode content is empty.
+* Fixed: Check for illegal characters in size and colors parameters.
+* Fixed: Allow Hexadecimal ASCII codes in the content.
+* Added: Anchor link parameter added to the automatic current page url.
+* Added: QR Code image clickable link available with the automatic current page url.
 
 = 1.3.2 =
-* Fix: htaccess options modified to prevent errors on some Apache configuration.
+
+* Fixed: htaccess options modified to prevent errors on some Apache configuration.
 
 = 1.3.1 =
-* Fix: Undefined wpkqcg_qrcode_display cache error with execution on DOMContentLoaded.
+
+* Fixed: Undefined wpkqcg_qrcode_display cache error with execution on DOMContentLoaded.
 
 = 1.3.0 =
-* Fix: Undefined variable qrcodeCssInlineBasic Notice.
-* Adding: Shortcode generator assistant available in any public custom post types.
-* Adding: Management of dynamic content using other shortcodes, via new shortcode [kaya_qrcode_dynamic][/kaya_qrcode_dynamic].
+
+* Fixed: Undefined variable qrcodeCssInlineBasic Notice.
+* Added: Shortcode generator assistant available in any public custom post types.
+* Added: Management of dynamic content using other shortcodes, via new shortcode [kaya_qrcode_dynamic][/kaya_qrcode_dynamic].
 
 = 1.2.0 =
-* Adding: QR Code preview and download on Shortcode generator assistant.
-* Adding: Shortcode generator assistant available in WooCommerce products page.
-* Adding: Better management of admin scripts.
-* Adding: Lighter loading of scripts (JS compressed).
-* Fix: Full width display bug of image.
+
+* Added: QR Code preview and download on Shortcode generator assistant.
+* Added: Shortcode generator assistant available in WooCommerce products page.
+* Added: Better management of admin scripts.
+* Added: Lighter loading of scripts (JS compressed).
+* Fixed: Full width display bug of image.
 
 = 1.1.1 =
-* Adding: Better management and lighter loading of scripts and resources.
+
+* Added: Better management and lighter loading of scripts and resources.
 
 = 1.1.0 =
-* Adding: Custom color and background color support.
-* Adding: Allow custom image alternate text.
+
+* Added: Custom color and background color support.
+* Added: Allow custom image alternate text.
 
 = 1.0.2 =
-* Adding: Allow "bitcoin:" as Bitcoin URI scheme.
-* Adding: Better management for resized image.
+
+* Added: Allow "bitcoin:" as Bitcoin URI scheme.
+* Added: Better management for resized image.
 
 = 1.0.1 =
-* Adding: noopener and noreferrer to links with target="_blank".
-* Adding: French translation.
+
+* Added: noopener and noreferrer to links with target="_blank".
+* Added: French translation.
 
 = 1.0.0 =
+
 * KQCG is ready for wordpress.org.
 
 = 0.1.0 =
+
 * "Kaya QR Code Generator" is created.

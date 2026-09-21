@@ -83,7 +83,7 @@ if (!class_exists('WP_KayaStudio_Plugins_Admin_Dashboard'))
 		{
 			if (isset($hook) && !empty($hook) && get_plugin_page_hookname(self::$_pageSlug, self::$_pageSlug) === $hook)
 			{
-				wp_register_style('kayastudio_wp_admin_css', plugin_dir_url(__FILE__) . '../css/kayastudio-admin-page-pkg.min.css', false, '1.0.0');
+				wp_register_style('kayastudio_wp_admin_css', plugin_dir_url(__FILE__) . '../css/kayastudio-admin-page-pkg.min.css', false, '2.0.0');
 				wp_enqueue_style('kayastudio_wp_admin_css');
 			}
 		}

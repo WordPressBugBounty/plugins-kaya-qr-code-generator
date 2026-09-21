@@ -1,71 +1,130 @@
 === Kaya QR Code Generator ===
 
 Plugin Name: Kaya QR Code Generator
-Description: Generate QR Code through Widgets and Shortcodes, without any dependencies.
-Tags: QR Code, qrcode, Widget, Shortcode, WooCommerce
+Description: Generate QR codes using shortcodes, the Gutenberg block or widget, with no third-party services or dependencies.
+Tags: QR Code, qrcode, QR, QR Code Generator, Shortcode
 Author: Kaya Studio
-Author URI:  https://kayastudio.fr
-Donate link: http://dotkaya.org/a-propos/
+Author URI: https://kayastudio.fr
+Donate link: https://dotkaya.org/a-propos/
 Contributors: kayastudio
-Requires at least: 4.6.0
-Tested up to: 6.9
-Stable tag: 1.6.0
-Version: 1.6.0
-Requires PHP: 5.2
+Requires at least: 5.0.0
+Tested up to: 7.1
+Stable tag: 1.7.0
+Version: 1.7.0
+Requires PHP: 5.4
 Text Domain: kaya-qr-code-generator
 Domain Path: /languages
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Generate QR Code through Widgets and Shortcodes, without any dependencies.
+Generate QR codes using shortcodes, the Gutenberg block or widget, with no third-party services or dependencies.
 
 == Description ==
 
-**Why use "Kaya QR Code Generator"?**
+**Kaya QR Code Generator** lets you create and display QR codes in your WordPress content using shortcodes, the built-in Gutenberg block or widget.
 
-This plugin creates QR Codes (Quick Response codes) through a widget or a shortCode for easy insertion into your pages, posts, sidebars, WooCommerce products, etc.
+No external service, API or third-party dependency is required. The QR code generation library is included with the plugin.
 
-Easy install and use, generate dynamic QR Codes with your custom settings. Content can be any text, link and even a Bitcoin address or the current page URL.
+You can encode any text, URL or other content, including Bitcoin addresses or the URL of the current page.
 
-The QR Code generator library is included (based on qr.js written by Kang Seonghoon) and don't need any dependencies.
+The QR code can be customized with different options such as size, error correction level, colors, alignment, title, alternative text, clickable links and a download button.
 
-= QR Code Features =
+= Three ways to add a QR code =
 
-* Add a title and choose its horizontal alignment.
-* Use static or dynamic content to encode in QR Code.
-* Add a query string to the automatic current page url.
-* Add an anchor link to the automatic current page url.
-* Select the information repetition level (Ability to correct read errors).
-* Set the QR Code image size.
-* Set the QR Code image border level.
-* QR Code image color and background color customizable.
-* Set the QR Code image horizontal alignment.
-* Add shadows to QR Code image.
-* Image alternate text customizable.
-* Clickable link on image customizable (support non-standard URL schemes).
-* Add a button to download QR Code image on frontend, with custom text and alignment.
+* **Shortcode** - Add a QR code using the `[kaya_qrcode]` shortcode or the dynamic `[kaya_qrcode_dynamic]` shortcode.
+* **Gutenberg block** - Add and configure a QR code directly in the WordPress block editor.
+* **Widget** - Add a QR code to a widget area using the built-in widget.
 
-= Generator Features =
+= Shortcode generator =
 
-* Use as built-in Widget.
-* Use as shortcode with generator assistant.
-* QR Code preview and download on Shortcode generator assistant.
-* The Shortcode generator assistant is available on pages, posts, WooCommerce products, any public custom post types and on the plugin option page.
-* Setting to enable or disable the reduced shortcode generator assistant in editor.
-* Setting to display or hide Shortcode generator assistant to selected user role.
-* Setting to display or hide Shortcode generator assistant to selected post type.
-* Setting to select Shortcode generator assistant Meta box context and priority in editor.
-* Setting to choose the default QR Code image color and background color.
-* Compatible with WordPress MultiSite and WooCommerce.
+The built-in Shortcode generator helps you create a shortcode without having to remember or enter its options manually.
 
-= Basic shortcode =
+The generator provides a live QR code preview and generated shortcode that can be copied and inserted into your content.
 
-* Static content: `[kaya_qrcode content="my encoded content"]`.
-* Dynamic content: `[kaya_qrcode_dynamic][example_shortcode][/kaya_qrcode_dynamic]`.
+It is available:
+
+* On the plugin settings page.
+* In the editor meta box for supported post types.
+
+The generator can also be configured to be displayed collapsed by default in the editor, showing only the generated shortcode and QR code preview until the full generator is opened.
+
+= QR code features =
+
+* Add an optional title and choose its heading level and horizontal alignment.
+* Encode static or dynamic content.
+* Automatically use the current page URL when no content is specified.
+* Add a query string to the automatic current page URL.
+* Add an anchor to the automatic current page URL.
+* Select the error correction level.
+* Set the QR code image size.
+* Set the QR code border width.
+* Customize the QR code and background colors.
+* Align the QR code image horizontally.
+* Add a shadow to the QR code image.
+* Disable the default plugin styles.
+* Set custom alternative text for the QR code image.
+* Add a clickable link to the QR code image.
+* Support non-standard URL schemes for clickable links.
+* Open clickable links in a new browser tab.
+* Add a download button with custom text and alignment.
+
+= Error correction levels =
+
+The QR code supports four error correction levels:
+
+* **Low** - Approximately 7% of the codewords can be restored.
+* **Medium** - Approximately 15% of the codewords can be restored.
+* **Quartile** - Approximately 25% of the codewords can be restored.
+* **High** - Approximately 30% of the codewords can be restored.
+
+Higher error correction levels make the QR code more resistant to damage or obstruction, but require more space within the QR code.
+
+= Dynamic content =
+
+Dynamic content allows the QR code content to be generated by another WordPress shortcode.
+
+For example:
+
+`[kaya_qrcode_dynamic][example_shortcode][/kaya_qrcode_dynamic]`
+
+The shortcode contained between the opening and closing tags is processed before the QR code is generated.
+
+= Settings =
+
+The plugin settings allow you to configure:
+
+* Which user roles can access the Shortcode generator.
+* Which post types display the Shortcode generator.
+* Whether the generator is collapsed by default in the editor.
+* The meta box location and priority in the editor.
+* The default QR code color.
+* The default background color.
+
+The plugin is compatible with WordPress Multisite and WooCommerce.
+
+= Basic shortcode examples =
+
+Static content:
+
+`[kaya_qrcode content="https://example.com"]`
+
+If no content is specified, the URL of the current page is used automatically:
+
+`[kaya_qrcode]`
+
+Dynamic content:
+
+`[kaya_qrcode_dynamic][example_shortcode][/kaya_qrcode_dynamic]`
+
+Additional options can be added to either shortcode.
 
 = Privacy =
 
-This plugin does not collect or store any user data. It does not set any cookies and does not connect to any third-party applications. This plugin only generate QR Code image based on your custom content.
+Kaya QR Code Generator does not collect or send personal user data to the plugin author or any third-party service.
+
+The plugin does not set cookies and does not connect to external services.
+
+QR codes are generated from the content and settings provided by the user.
 
 = Available Languages =
 
@@ -74,93 +133,163 @@ This plugin does not collect or store any user data. It does not set any cookies
 
 = Feedback =
 
-Any suggestions or feedback is welcome, thank you for using or trying one of my plugins. Please take the time to let me know about your experiences and rate this plugin.
+Suggestions and feedback are welcome.
+
+If you use Kaya QR Code Generator, please consider sharing your experience and rating the plugin. Your feedback helps improve the plugin and makes it easier for other users to discover it.
 
 == Screenshots ==
 
-1. Kaya QR Code Generator: Widget.
-2. Kaya QR Code Generator: Shortcode generator assistant.
-3. Kaya QR Code Generator: Shortcode generator assistant with dynamic content.
-4. Kaya QR Code Generator: Settings page.
-5. Kaya QR Code Generator: Custom QR Code display examples.
+1. Kaya QR Code Generator: Shortcode generator.
+2. Kaya QR Code Generator: Gutenberg block.
+3. Kaya QR Code Generator: Settings page.
+4. Kaya QR Code Generator: Custom QR code display examples.
 
 == Frequently Asked Questions ==
 
-= Why my modifications are not saved when I update my post? =
+= How can I add a QR code to my content? =
 
-The ‘Kaya QR Code Generator’ panel available in a page, a post, a WooCommerce product or in any public custom post type, is not used as custom fields for the post and don’t affect anything in the page content.
+There are three ways to add a QR code:
 
-The shortcode generator assistant, is used to assist on the shortcode structure construction. The generated shortcode must be pasted on a “shortcode block” or directly in the page content.
+* Use the `[kaya_qrcode]` shortcode.
+* Add the Kaya QR Code block in the Gutenberg editor.
+* Use the Kaya QR Code widget in a widget area.
 
-= Can I use the shortcodes in a PDF or a mail? =
+You can also use the Shortcode generator to create a shortcode with your preferred options.
 
-No, the QR Code shortcode must be present in a WordPress page, because it uses JavaScript functions to generate the QR Code image.
+= How do I use the Shortcode generator? =
 
-But you can download the generated image on Shortcode generator assistant for example and use it as you want.
+The Shortcode generator lets you configure the QR code options and automatically generates the corresponding shortcode.
 
-= How to use dynamic content? =
+It also provides a QR code preview and a button to copy the generated shortcode.
 
-No problem, Kaya QR Code Generator is easy to use with dynamic content (other shortcodes).
+In the editor, the generator can be displayed fully or collapsed by default. When collapsed, only the generated shortcode and QR code preview are displayed until the generator is opened.
 
-If you want to display dynamic content by a widget, the generator is used by default and you just need to check the checkbox "Use dynamic content (other shortcodes)".
+= Why are my changes in the editor not saved with the post? =
 
-If you want to display dynamic content by a shortcode, use this following shortcode: `[kaya_qrcode_dynamic][example_shortcode][/kaya_qrcode_dynamic]`.
+The Shortcode generator fields are used to build a shortcode. They are not custom fields for the post and do not modify or save anything in the post content.
 
-= What if I wish to modify the QR Code options and display? =
+After configuring the QR code, copy the generated shortcode and insert it into a Shortcode block or directly into your content.
 
-No problem, Kaya QR Code Generator is fully customizable.
+If you want to configure and insert a QR code directly in the Gutenberg editor, you can use the Kaya QR Code block instead.
 
-You can add a query string or an anchor link to the automatic current page URL.
+= How can I use dynamic content? =
 
-You can modify the image size in pixels, the error correction level (Low ~7%, Medium ~15%, Quarter ~25% and High ~30%).
+Dynamic content allows you to generate the QR code content from another WordPress shortcode.
 
-You can add a title, shadows on image, modify the horizontal alignment, and use custom colors and background colors.
+For a shortcode, use:
 
-= What if I wish to add a link on my QR Code? =
+`[kaya_qrcode_dynamic][example_shortcode][/kaya_qrcode_dynamic]`
 
-No problem, Kaya QR Code Generator is fully customizable.
+The shortcode between the opening and closing tags is processed before the QR code is generated.
 
-You can add a destination URL (or use automatic current page URL / QR Code content URL) as clickable link, and make it open in a new window.
+= Can I use the current page URL automatically? =
 
-= How to find and use shortcode generator assistant? =
+Yes.
 
-No problem, Kaya QR Code Generator is easy to use.
+Use:
 
-If you want to display the qr-code by a widget, the generator is used by default.
+`[kaya_qrcode]`
 
-If you want to display the qr-code in a page, a post, a WooCommerce product or in any public custom post type, the generator is under the administration primary content of your page / post / product.
+When no content is specified, the URL of the current page is used automatically.
 
-If the ‘Kaya QR Code Generator’ panel is not displayed, verify that ‘Kaya QR Code Generator’ is checked in the page / post / product options, in ‘Show more tools & options’ > ‘Options’ and ‘Advanced Panels’.
+You can also add a query string or an anchor to the current page URL.
 
-The shortcode generator assistant is also available in the plugin options page.
+= Can I customize the QR code appearance? =
 
-= How to support the advancement of this plugin? =
+Yes.
 
-Any suggestions or feedback is welcome, please take the time to let me know about your experiences and rate this plugin.
+You can customize the QR code size, border width, error correction level, colors, background color and alignment.
 
-You can help to support the advancement by donate to this plugin, see more details on http://dotkaya.org/a-propos/
+You can also add a title, shadow, alternative text, clickable link and download button.
+
+= Can I make the QR code clickable? =
+
+Yes.
+
+You can specify a destination URL for the QR code image or use the QR code content as the link.
+
+The link can also be configured to open in a new browser tab.
+
+Non-standard URL schemes are supported.
+
+= Can I use a transparent background? =
+
+Yes.
+
+The background color supports transparency. You can use an 8-digit hexadecimal color value such as `#FFFFFF00` for a fully transparent background.
+
+= Can I use the generated QR code outside WordPress? =
+
+Yes.
+
+The QR code image generated by the plugin can be downloaded and then used wherever you need it.
+
+However, the shortcode itself is intended to be used in WordPress content and cannot be used directly in a PDF or email.
+
+= Does the plugin use an external QR code service? =
+
+No.
+
+The QR code generation library is included with the plugin (based on qr.js written by Kang Seonghoon). No external API, service or third-party application is required to generate the QR code.
+
+= Is my data sent to a third-party service? =
+
+No.
+
+The plugin does not connect to third-party services or applications to generate QR codes. The QR code is generated from the content provided to the plugin.
+
+= Is the plugin compatible with WooCommerce? =
+
+Yes.
+
+The Shortcode generator can be made available for WooCommerce products, and QR codes can be used in WooCommerce content like other WordPress content.
+
+= Is the plugin compatible with WordPress Multisite? =
+
+Yes.
+
+Kaya QR Code Generator supports WordPress Multisite.
+
+= How can I support the development of the plugin? =
+
+Kaya QR Code Generator is free to use and is developed by Kaya Studio.
+
+You can support the development by leaving a review, sharing the plugin or making a donation.
+
+More information about donations is available here: https://dotkaya.org/a-propos/
 
 == Installation ==
 
 The quickest way:
 
-1. Go to the Plugins Menu in WordPress and select Plugins > Add new
-1. Search for "Kaya QR Code Generator"
-1. Click "Install" and "activate".
+1. Go to **Plugins > Add New** in WordPress.
+1. Search for **Kaya QR Code Generator**.
+1. Click **Install Now** and then **Activate**.
 
 The other way:
 
-1. Upload the "kaya-qr-code-generator" folder to the "/wp-content/plugins/" directory
-1. Activate the plugin through the "Plugins" menu in WordPress.
+1. Upload the `kaya-qr-code-generator` folder to the `/wp-content/plugins/` directory.
+1. Activate the plugin through the **Plugins** menu in WordPress.
 
 == Changelog ==
 
-= 1.6.0 =
-* Fix: Proper query string added to the automatic current page url if parameters are already present.
-* Adding: Provides option to remove plugin style on QR Code image.
-* Adding: Provides option to select border level on QR Code image.
-* Adding: Provides option to enabling a button to download QR Code image on frontend, with custom text and alignment.
-* Adding: On QR Code Generator settings page: Settings to select Meta box context and priority in editor.
-* Adding: On QR Code Generator settings page: Settings to select default QR Code image color and background color.
+= 1.7.0 =
 
-To read the changelog of earlier versions of Kaya QR Code Generator, please navigate to the "changelog.txt" file.
+* Added: Built-in Gutenberg block for adding and configuring QR codes directly in the block editor.
+* Added: QR code preview in the Gutenberg block.
+* Added: Generated shortcode copy button.
+* Improved: Plugin administration interface and user experience.
+* Improved: Settings and Shortcode generator interface.
+* Improved: Settings and generator descriptions.
+* Improved: Documentation and user interface consistency.
+
+= 1.6.0 =
+
+* Fixed: Proper query string added to the automatic current page URL if parameters are already present.
+* Added: Option to remove the default plugin styles from the QR code image.
+* Added: Option to select the QR code border width.
+* Added: Option to display a download button on the frontend with custom text and alignment.
+* Added: Settings to select the meta box context and priority in the editor.
+* Added: Settings to select the default QR code image color and background color.
+
+To read the changelog of earlier versions of Kaya QR Code Generator, please see the `changelog.txt` file.
