@@ -89,6 +89,12 @@ function wpkqcg_qrcode_display(contextDoc)
 		{
 			var qrcode_img = qrcode[i];
 
+			// OPTIMISATION : Si le QR code a déjà été généré, on passe au suivant
+			if (qrcode_img.getAttribute('data-rendered') === 'true')
+			{
+				continue;
+			}
+
 			// ASTUCE : On cherche le conteneur parent direct du bloc pour ne pas déborder sur les autres blocs
 			var container = qrcode_img.closest('.kaya-qrcode-block') || doc;
 
@@ -112,6 +118,10 @@ function wpkqcg_qrcode_display(contextDoc)
 					qrcode_color.value,
 					qrcode_bgcolor.value
 				];
+
+				// MARQUAGE : On indique qu'il est traité AVANT l'encodage pour éviter les boucles
+				qrcode_img.setAttribute('data-rendered', 'true');
+
 				wpkqcg_qrcode_encode(qrcode_data, contextDoc);
 			} else
 			{

@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 1.7.1 =
+
+* Fixed: QR code rendering issues on forms and pages using dynamic or asynchronous JavaScript loading (e.g., Ninja Forms).
+
 = 1.7.0 =
 
 * Added: Built-in Gutenberg block for adding and configuring QR codes directly in the block editor.

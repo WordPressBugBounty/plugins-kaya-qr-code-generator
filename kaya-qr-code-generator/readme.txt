@@ -9,8 +9,8 @@ Donate link: https://dotkaya.org/a-propos/
 Contributors: kayastudio
 Requires at least: 5.0.0
 Tested up to: 7.1
-Stable tag: 1.7.0
-Version: 1.7.0
+Stable tag: 1.7.1
+Version: 1.7.1
 Requires PHP: 5.4
 Text Domain: kaya-qr-code-generator
 Domain Path: /languages
@@ -139,10 +139,12 @@ If you use Kaya QR Code Generator, please consider sharing your experience and r
 
 == Screenshots ==
 
-1. Kaya QR Code Generator: Shortcode generator.
-2. Kaya QR Code Generator: Gutenberg block.
-3. Kaya QR Code Generator: Settings page.
-4. Kaya QR Code Generator: Custom QR code display examples.
+1. Kaya QR Code Generator: Widget.
+2. Kaya QR Code Generator: Shortcode generator.
+3. Kaya QR Code Generator: Shortcode generator with dynamic content.
+4. Kaya QR Code Generator: Gutenberg block.
+5. Kaya QR Code Generator: Settings page.
+6. Kaya QR Code Generator: Custom QR code display examples.
 
 == Frequently Asked Questions ==
 
@@ -272,6 +274,10 @@ The other way:
 1. Activate the plugin through the **Plugins** menu in WordPress.
 
 == Changelog ==
+
+= 1.7.1 =
+
+* Fixed: QR code rendering issues on forms and pages using dynamic or asynchronous JavaScript loading (e.g., Ninja Forms).
 
 = 1.7.0 =
 
