@@ -9,8 +9,8 @@
  * Contributors: kayastudio
  * Requires at least: 5.0.0
  * Tested up to: 7.1
- * Stable tag: 1.7.1
- * Version: 1.7.1
+ * Stable tag: 1.7.2
+ * Version: 1.7.2
  * Requires PHP: 5.4
  * Text Domain: kaya-qr-code-generator
  * Domain Path: /languages
@@ -23,7 +23,7 @@ if (!defined('ABSPATH'))
 	exit; // Exit if accessed directly
 }
 
-if (!defined('WPKQCG_VERSION'))				define('WPKQCG_VERSION', '1.7.1');
+if (!defined('WPKQCG_VERSION'))				define('WPKQCG_VERSION', '1.7.2');
 if (!defined('WPKQCG_FILE'))				define('WPKQCG_FILE', plugin_basename(__FILE__));
 if (!defined('WPKQCG_PLUGIN_URL'))			define('WPKQCG_PLUGIN_URL', plugin_dir_url(__FILE__));
 if (!defined('WPKQCG_PLUGIN_PATH'))			define('WPKQCG_PLUGIN_PATH', plugin_dir_path(__FILE__));

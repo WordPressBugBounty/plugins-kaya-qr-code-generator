@@ -106,7 +106,7 @@ function wpkqcg_qrcode_display(contextDoc)
 			var qrcode_bgcolor = container.querySelector('#' + qrcode_img.id + '_bgcolor');
 			var qrcode_content = container.querySelector('#' + qrcode_img.id + '_content');
 
-			// Sécurité : On s'assure que tous les champs requis sont bien présents dans ce bloc avant de générer
+			// 1. MÉTHODE PRINCIPALE : Via les champs cachés (Inputs)
 			if (qrcode_content && qrcode_ecclevel && qrcode_size && qrcode_border && qrcode_color && qrcode_bgcolor) 
 			{
 				var qrcode_data = [
@@ -123,9 +123,29 @@ function wpkqcg_qrcode_display(contextDoc)
 				qrcode_img.setAttribute('data-rendered', 'true');
 
 				wpkqcg_qrcode_encode(qrcode_data, contextDoc);
-			} else
+			}
+			// 2. MÉTHODE DE REPLI (FALLBACK) : Via les attributs data-* (ex: Ninja Forms success message)
+			else if (qrcode_img.getAttribute('data-content')) 
 			{
-				console.warn("Kaya QR Code : Éléments de configuration manquants pour le bloc " + qrcode_img.id);
+				var qrcode_data_fallback = [
+					qrcode_img.id,
+					qrcode_img.getAttribute('data-content'),
+					qrcode_img.getAttribute('data-ecclevel'),
+					qrcode_img.getAttribute('data-size'),
+					qrcode_img.getAttribute('data-border'),
+					qrcode_img.getAttribute('data-color'),
+					qrcode_img.getAttribute('data-bgcolor')
+				];
+
+				// MARQUAGE
+				qrcode_img.setAttribute('data-rendered', 'true');
+
+				wpkqcg_qrcode_encode(qrcode_data_fallback, contextDoc);
+			}
+			// 3. ÉCHEC TOTAL : Si aucune des deux méthodes n'a les données nécessaires
+			else
+			{
+				console.warn("Kaya QR Code : Missing configuration elements for the block " + qrcode_img.id);
 			}
 		}
 	}

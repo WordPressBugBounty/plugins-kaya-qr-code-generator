@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 1.7.2 =
+
+* Fixed: Added data attributes fallback for QR code generation when hidden input fields are stripped or missing from the DOM (e.g., Ninja Forms success messages).
+* Fixed: Improved current page URL detection during AJAX requests by implementing an HTTP Referer fallback instead of using the administrative AJAX URL.
+
 = 1.7.1 =
 
 * Fixed: QR code rendering issues on forms and pages using dynamic or asynchronous JavaScript loading (e.g., Ninja Forms).

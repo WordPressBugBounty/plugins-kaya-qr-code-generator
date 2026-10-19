@@ -67,7 +67,27 @@ function wpkqcg_doDisplayQRCode($p_qrcodeValues, $p_widgetArgs = array())
 	// set content as current page url
 	if (empty($qrcodeContent))
 	{
-		$qrcodeContent = esc_attr(esc_url((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"));
+		// Detection of fallback during an AJAX call (e.g., Ninja Forms)
+		if ((defined('DOING_AJAX') && DOING_AJAX) || str_contains($_SERVER['REQUEST_URI'], 'admin-ajax.php'))
+		{
+			if (!empty($_SERVER['HTTP_REFERER']))
+			{
+				// Cleaning of the received original URL
+				$qrcodeContent = esc_url_raw($_SERVER['HTTP_REFERER']);
+			}
+			else
+			{
+				// Security in case the referrer is blocked by the browser
+				$qrcodeContent = home_url('/');
+			}
+		}
+		else
+		{
+			// NORMAL OPERATION (Page loaded directly)
+			$qrcodeContent = esc_attr(esc_url((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"));
+		}
+
+		// Adding query strings and global anchors
 		$qrcodeContent .= (!empty($qrcodeQueryString)) ? esc_attr((!str_contains($qrcodeContent, '?') ? '?' : '&') . $qrcodeQueryString) : '';
 		$qrcodeContent .= (!empty($qrcodeAnchor)) ? esc_attr('#' . $qrcodeAnchor) : '';
 	}
@@ -236,6 +256,16 @@ function wpkqcg_doDisplayQRCode($p_qrcodeValues, $p_widgetArgs = array())
 
 	// set QR Code image structure
 	$output .= '<img src="" id="' . $qrcodeImgID . '" alt="' . $qrcodeAlt . '" class="wpkqcg_qrcode"';
+
+	// Adding data attributes for the fallback mechanism
+	$output .= ' data-ecclevel="' . $qrcodeEccLevel . '"';
+	$output .= ' data-size="' . $qrcodeSize . '"';
+	$output .= ' data-border="' . $qrcodeBorder . '"';
+	$output .= ' data-color="' . $qrcodeColor . '"';
+	$output .= ' data-bgcolor="' . $qrcodeBgColor . '"';
+	$output .= ' data-content="' . $qrcodeContent . '"';
+
+	// Adding style to QR Code image
 	if (empty($qrcodeNoCss))
 	{
 		$output .= ' style="' . $qrcodeCssInlineBasic . $qrcodeCssInlineShadow . $qrcodeCssInlineAlign . '"';
